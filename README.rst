@@ -80,6 +80,13 @@ on each commit::
     git secrets --register-aws
 
 
+
+HOSTING: Shell Aliases
+----------------------
+See `shell-aliases` for suggestions / ideas on workflow with shell alias support
+
+
+
 Advanced configuration
 ----------------------
 
