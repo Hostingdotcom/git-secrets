@@ -1,6 +1,10 @@
 #Create alias to setup 'git-secrets' in the current repo
 # put in ~/.config/fish/functions
-function git-secrets
-	git secrets --install
-	git secrets --register-aws
+# Creates a dot file in the repo root to indicate that git-secrets was run on this repo; this can be used in other automation checks
+function git-secrets-init
+	touch .git-secrets-init
+	set date (date)
+	echo -e "#This file indicates that aws git-secrets commit protection was enabled on [ $date ]\n#https://github.com/awslabs/git-secrets" > .git-secrets-init
+	git secrets --install | tee -a .git-secrets-init
+	git secrets --register-aws | tee -a .git-secrets-init
 end
